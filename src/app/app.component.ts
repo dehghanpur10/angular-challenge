@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
+import {FetchDataService} from './service/fetch-data.service'
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import {ActivatedRoute} from '@angular/router'
 })
 export class AppComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private data: FetchDataService) {
   }
 
   ngOnInit() {
