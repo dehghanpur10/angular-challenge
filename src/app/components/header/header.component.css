@@ -6,7 +6,7 @@
   height: 35px;
   width: 100px;
 }
-.nav-item:hover{
+.nav-item:hover, .active{
   color: crimson;
   transition: all 0.3s;
 }

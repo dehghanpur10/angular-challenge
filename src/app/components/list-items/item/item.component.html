@@ -1,0 +1,15 @@
+<mat-card class="m-1 card" [ngStyle]="{borderTop :getBorder()}" >
+  <mat-card-header class="d-flex justify-content-center">
+    <mat-card-title >{{data.action}}</mat-card-title>
+  </mat-card-header>
+  <hr>
+  <mat-card-content>
+    <p class="text-center mat-h2 ">first value</p>
+    <p class="text-center mat-h3">{{data.value1}}</p>
+    <p class="text-center mat-h2 ">second value</p>
+    <p class="text-center mat-h3">{{data.value2}}</p>
+    <p class="text-center mat-h2 ">result</p>
+    <p class="text-center mat-h3">{{getResult()}}</p>
+  </mat-card-content>
+
+</mat-card>

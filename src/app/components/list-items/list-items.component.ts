@@ -26,7 +26,6 @@ export class ListItemsComponent implements OnInit,OnDestroy {
     // data subscribe
     this.dataSub = this.data.data.subscribe(
       (operations) => {
-        console.log(operations)
         this.operations = operations;
       },
       (err) => {
