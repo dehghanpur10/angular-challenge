@@ -1,0 +1,6 @@
+.error{
+  min-width: 300px;
+  height: 80px;
+  z-index: 10;
+  background-color: rgba(220, 20, 60, 0.7);
+}

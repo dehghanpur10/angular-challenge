@@ -3,7 +3,7 @@ import {Subscription} from "rxjs";
 import {Operation} from "../../models/app.model";
 import {ActivatedRoute} from "@angular/router";
 import {GetDataService} from "../../service/get-data/get-data.service";
-
+import {ErrorService} from '../../service/error/error.service'
 @Component({
   selector: 'app-list-items',
   templateUrl: './list-items.component.html',
@@ -14,7 +14,7 @@ export class ListItemsComponent implements OnInit, OnDestroy {
   dataSub: Subscription | undefined;
   operations: Operation[] = []
 
-  constructor(private route: ActivatedRoute, private data: GetDataService) {
+  constructor(private route: ActivatedRoute, private data: GetDataService,private error:ErrorService) {
   }
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class ListItemsComponent implements OnInit, OnDestroy {
         this.operations = operations
       },
       (err) => {
-        console.log(err)
+        this.error.createError("There is a problem on the server")
       }
     )
   }

@@ -1,14 +1,29 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {ActivatedRoute} from '@angular/router'
 import {Subscription} from 'rxjs'
-
-import {GetDataService} from './service/get-data/get-data.service'
-import {Operation} from './models/app.model'
+import {ErrorService} from './service/error/error.service'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent   {
+export class AppComponent implements OnInit, OnDestroy {
+  errorSub:Subscription|undefined;
+  isError: boolean = false
+  errorContent: string = ''
+
+  constructor(private error: ErrorService) {
+  }
+
+  ngOnInit() {
+    this.errorSub = this.error.error.subscribe(error => {
+      this.errorContent = error;
+      this.isError = true;
+    })
+  }
+
+  ngOnDestroy() {
+    this.errorSub?.unsubscribe()
+  }
+
 }

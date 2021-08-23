@@ -9,13 +9,15 @@ import {MaterialModule} from "./material/material.module";
 import {HeaderComponent} from "./components/header/header.component";
 import { ListItemsComponent } from './components/list-items/list-items.component';
 import { ItemComponent } from './components/list-items/item/item.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ListItemsComponent,
-    ItemComponent
+    ItemComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
