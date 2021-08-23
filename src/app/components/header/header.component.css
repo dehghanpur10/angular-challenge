@@ -1,0 +1,12 @@
+.header{
+  height: 70px;
+  background-color: #202020;
+}
+.nav-item{
+  height: 35px;
+  width: 100px;
+}
+.nav-item:hover{
+  color: crimson;
+  transition: all 0.3s;
+}

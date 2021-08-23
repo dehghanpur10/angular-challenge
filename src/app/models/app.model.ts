@@ -9,7 +9,6 @@ export interface Action {
 
 export interface Operation {
   value1: number,
-  value2: number,
+  value2: number | string,
   action: string,
-  result: number
 }

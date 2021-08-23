@@ -6,15 +6,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material/material.module";
+import {HeaderComponent} from "./components/header/header.component";
+import { ListItemsComponent } from './components/list-items/list-items.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    ListItemsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([{path:'',component:ListItemsComponent}]),
     BrowserAnimationsModule,
     MaterialModule,
   ],

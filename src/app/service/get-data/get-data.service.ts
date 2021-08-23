@@ -38,14 +38,12 @@ export class GetDataService {
               value1: number.value,
               value2: actionValue.add,
               action: "add",
-              result: number.value + actionValue.add
             })
           } else {
             operations.push({
               value1: number.value,
               value2: actionValue.multiply,
               action: "multiply",
-              result: number.value * actionValue.multiply
             })
           }
         }

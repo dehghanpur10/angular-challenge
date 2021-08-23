@@ -1,0 +1,12 @@
+<div class="header mw-100 d-flex flex-row justify-content-center align-items-center">
+  <a class="nav-item mx-1" mat-flat-button color="accent" [routerLink]="['/']" [queryParams]="{'filter':'all'}" >
+    <mat-icon inline>home</mat-icon> all
+  </a>
+  <a class="nav-item mx-1" mat-raised-button color="accent" [routerLink]="['/']" [queryParams]="{'filter':'add'}" >
+    <mat-icon inline>add</mat-icon> add
+  </a>
+  <a class="nav-item mx-1" mat-raised-button color="accent" [routerLink]="['/']" [queryParams]="{'filter':'multiply'}">
+    <mat-icon inline>clear</mat-icon> multiply
+  </a>
+</div>
+
