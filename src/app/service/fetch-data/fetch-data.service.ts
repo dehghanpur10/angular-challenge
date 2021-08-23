@@ -34,9 +34,9 @@ export class FetchDataService {
 
   getActionValue() {
     return this.getAdd().pipe(
-      catchError(add => of("MISSING DATA")),
+      catchError(() => of("MISSING DATA")),
       mergeMap(add => this.getMultiply().pipe(
-        catchError(multiply => of("MISSING DATA")),
+        catchError(() => of("MISSING DATA")),
         map(multiply => {
           return {add: add, multiply: multiply}
         })))
