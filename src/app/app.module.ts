@@ -20,8 +20,8 @@ import { ItemComponent } from './components/list-items/item/item.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([{path:'',component:ListItemsComponent}]),
     BrowserAnimationsModule,
+    RouterModule.forRoot([{path:'',component:ListItemsComponent}]),
     MaterialModule,
   ],
   providers: [],

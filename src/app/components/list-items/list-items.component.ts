@@ -9,7 +9,7 @@ import {GetDataService} from "../../service/get-data/get-data.service";
   templateUrl: './list-items.component.html',
   styleUrls: ['./list-items.component.css']
 })
-export class ListItemsComponent implements OnInit,OnDestroy {
+export class ListItemsComponent implements OnInit, OnDestroy {
   querySub: Subscription | undefined;
   dataSub: Subscription | undefined;
   operations: Operation[] = []
@@ -25,8 +25,8 @@ export class ListItemsComponent implements OnInit,OnDestroy {
 
     // data subscribe
     this.dataSub = this.data.data.subscribe(
-      (operations) => {
-        this.operations = operations;
+      async (operations) => {
+        this.operations = operations
       },
       (err) => {
         console.log(err)

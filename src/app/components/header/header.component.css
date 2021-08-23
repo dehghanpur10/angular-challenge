@@ -4,7 +4,7 @@
 }
 .nav-item{
   height: 35px;
-  width: 100px;
+  width: 120px;
 }
 .nav-item:hover, .active{
   color: crimson;
