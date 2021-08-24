@@ -22,7 +22,6 @@ export class ListItemsComponent implements OnInit, OnDestroy {
     this.querySub = this.route.queryParams.subscribe((query) => {
       this.data.filterData(query['filter']);
     })
-
     // data subscribe
     this.dataSub = this.data.data.subscribe(
       async (operations) => {
