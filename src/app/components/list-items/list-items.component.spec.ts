@@ -1,48 +1,65 @@
-// import {ListItemsComponent} from './list-items.component'
-// import {ComponentFixture, TestBed} from "@angular/core/testing";
-// import {GetDataService} from "../../service/get-data/get-data.service";
-// import {ErrorService} from '../../service/error/error.service'
-// import {ActivatedRoute, RouterModule} from "@angular/router";
-// import {Subject} from 'rxjs';
-// import {FetchDataService} from '../../service/fetch-data/fetch-data.service'
-//
-//
-// describe('ListItemsComponent', () => {
-//   let component: ListItemsComponent;
-//   let fixture: ComponentFixture<ListItemsComponent>;
-//   // let listItemsComponent: ListItemsComponent
-//   let getData: GetDataService
-//   let activatedRoute: ActivatedRoute
-//   let errorService: ErrorService
-//   beforeEach(() => {
-//     const spy1 = jasmine.createSpyObj('GetDataService', ['filterData']);
-//     const spy2 = jasmine.createSpyObj('ActivatedRoute', ['queryParams']);
-//     TestBed.configureTestingModule({
-//       declarations: [ListItemsComponent],
-//       imports:[
-//         RouterModule
-//       ],
-//       providers: [
-//         FetchDataService,
-//         ErrorService,
-//         ActivatedRoute,
-//         {provide: GetDataService, useValue: spy1},
-//         // {provide: ActivatedRoute, useValue: spy2}
-//       ]
-//     }).compileComponents();
-//
-//     // listItemsComponent = TestBed.inject(ListItemsComponent)
-//     activatedRoute = TestBed.inject(ActivatedRoute)
-//     getData = TestBed.inject(GetDataService)
-//     errorService = TestBed.inject((ErrorService))
-//     fixture = TestBed.createComponent(ListItemsComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   })
-//   it('should be get operations', (done: DoneFn) => {
-//     const operations = [{value1: 1, value2: 2, action: "add"}]
-//     // getData.data = new Subject()
-//     getData.data.next(operations)
-//     expect(component.operations).toEqual([{value1: 2, value2: 2, action: "add"}])
-//   });
-// })
+import {ActivatedRoute} from "@angular/router";
+import {TestBed} from "@angular/core/testing";
+
+import {GetDataService} from "../../service/get-data/get-data.service";
+import {ErrorService} from '../../service/error/error.service'
+import {ListItemsComponent} from "./list-items.component";
+import {of, Subject} from "rxjs";
+
+describe('ListItemsComponent', () => {
+  let activatedRoute: ActivatedRoute;
+  let getDataService: GetDataService;
+  let errorService: ErrorService;
+  let listItemsComponent: ListItemsComponent;
+  beforeEach(() => {
+    const routeSpy = jasmine.createSpyObj('ActivatedRoute', ['queryParams']);
+    const getDataSpy = jasmine.createSpyObj('GetDataService', ['filterData']);
+    const errorSpy = jasmine.createSpyObj('ErrorService', ['createError']);
+
+    TestBed.configureTestingModule({
+      providers: [
+        ListItemsComponent,
+        {provide: ActivatedRoute, useValue: routeSpy},
+        {provide: GetDataService, useValue: getDataSpy},
+        {provide: ErrorService, useValue: errorSpy},
+      ]
+    });
+    listItemsComponent = TestBed.inject(ListItemsComponent);
+    activatedRoute = TestBed.inject(ActivatedRoute) as jasmine.SpyObj<ActivatedRoute>;
+    ;
+    getDataService = TestBed.inject(GetDataService);
+    errorService = TestBed.inject(ErrorService);
+    getDataService.data = new Subject();
+    errorService.error = new Subject()
+
+  })
+  it('should be get operations', () => {
+    const operations = [{value1: 1, value2: 2, action: "add"}];
+    activatedRoute.queryParams = of([])
+    listItemsComponent.ngOnInit();
+
+    getDataService.data.next(operations);
+
+    expect(listItemsComponent.operations).toEqual(operations)
+  })
+  it('should be create error', (done:DoneFn) => {
+    activatedRoute.queryParams = of([])
+    listItemsComponent.ngOnInit();
+
+    errorService.error.subscribe((error) => {
+      expect(error).toBe("error content")
+      done()
+    })
+    getDataService.data.error("error content");
+  })
+  // it('should be create error', () => {
+  //   const operations = [{value1: 1, value2: 2, action: "add"}];
+  //   activatedRoute.queryParams = of([])
+  //   activatedRoute.
+  //   getDataService.filterData = () => {
+  //     getDataService.data.next(operations)
+  //   }
+  //   listItemsComponent.ngOnInit();
+  //   expect(listItemsComponent.operations).toEqual(operations)
+  // })
+})
