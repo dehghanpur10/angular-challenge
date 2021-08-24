@@ -47,6 +47,7 @@ export class ItemComponent implements OnInit {
     }
   }
 
+
   getResult() {
     if (typeof this.data.value2 === "string") {
       return 'MISSING DATA'

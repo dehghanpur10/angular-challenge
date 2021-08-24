@@ -7,12 +7,9 @@ import { Component,Input, OnInit } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
   @Input() error:string = '';
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
-  setBorder(){
-
-  }
-
 }

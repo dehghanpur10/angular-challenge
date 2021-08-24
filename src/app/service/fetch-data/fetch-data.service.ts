@@ -20,13 +20,13 @@ export class FetchDataService {
     return this.http.get<Number[]>(this.numberUrl)
   }
 
-  private getAdd() {
+  getAdd() {
     return this.http.get<Action>(this.addUrl).pipe(
       map(add => add.value),
     )
   }
 
-  private getMultiply() {
+  getMultiply() {
     return this.http.get<Action>(this.multiplyUrl).pipe(
       map(multiply => multiply.value)
     )

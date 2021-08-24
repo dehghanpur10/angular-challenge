@@ -28,7 +28,7 @@ export class GetDataService {
     return false
   }
 
-  private mergeNumber(type: string, numbers: Number[]) {
+  private mergeNumber( numbers: Number[]) {
     return this.fetch.getActionValue().pipe(
       map(actionValue => {
         let operations: Operation[] = [];
@@ -58,12 +58,14 @@ export class GetDataService {
       type = "all"
     }
 
+
     this.fetch.getNumber().pipe(
       map((number: Number[]) => {
         return number.filter(number => this.filterNumber(type, number))
       }),
       mergeMap(numbers => {
-        return this.mergeNumber(type, numbers)
+        const merge = this.mergeNumber(numbers)
+        return merge
       })
     ).subscribe(
       operations => {
