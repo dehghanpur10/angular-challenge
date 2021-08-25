@@ -34,8 +34,10 @@ export class ListItemsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.querySub?.unsubscribe()
-    this.dataSub?.unsubscribe()
+    // @ts-ignore
+    this.querySub.unsubscribe()
+    // @ts-ignore
+    this.dataSub.unsubscribe()
   }
 
 }

@@ -23,7 +23,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.errorSub?.unsubscribe()
+    // @ts-ignore
+    this.errorSub.unsubscribe()
   }
 
 }

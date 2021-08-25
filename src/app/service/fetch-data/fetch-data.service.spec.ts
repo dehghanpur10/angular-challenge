@@ -9,6 +9,7 @@ describe('FetchDataService', () => {
   let service: FetchDataService;
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
@@ -17,8 +18,6 @@ describe('FetchDataService', () => {
     httpTestingController = TestBed.inject(HttpTestingController);
     service = TestBed.inject(FetchDataService);
   });
-
-
 
   it('should return array of number', () => {
     const numbers: Number[] = [{value: 1, action: "add"}, {value: 2, action: "multiply"}]
@@ -30,28 +29,6 @@ describe('FetchDataService', () => {
     req.flush(numbers);
     httpTestingController.verify();
   });
-
-  // it('should return value of add action', () => {
-  //   const add: Action= {value: 1}
-  //   service.getAdd().subscribe(data =>
-  //     expect(data).toEqual(add.value)
-  //   );
-  //   const req = httpTestingController.expectOne(service.addUrl);
-  //   expect(req.request.method).toEqual('GET');
-  //   req.flush(add);
-  //   httpTestingController.verify();
-  // });
-  //
-  // it('should return value of multiply action', () => {
-  //   const multiply: Action= {value: 1}
-  //   service.getMultiply().subscribe(data =>
-  //     expect(data).toEqual(multiply.value)
-  //   );
-  //   const req = httpTestingController.expectOne(service.multiplyUrl);
-  //   expect(req.request.method).toEqual('GET');
-  //   req.flush(multiply);
-  //   httpTestingController.verify();
-  // });
 
   it('should return value of actions', () => {
     const multiply: Action= {value: 1}
@@ -70,6 +47,7 @@ describe('FetchDataService', () => {
 
     httpTestingController.verify();
   });
+
   it('should return MISSING DATA for value of actions', () => {
     service.getActionValue().subscribe(data =>
       expect(data).toEqual({add:'MISSING DATA',multiply:'MISSING DATA'})
@@ -85,4 +63,5 @@ describe('FetchDataService', () => {
 
     httpTestingController.verify();
   });
+
 });

@@ -9,7 +9,6 @@ describe('ErrorService', () => {
     TestBed.configureTestingModule({providers: [ErrorService]});
     errorService = TestBed.inject(ErrorService);
   });
-  // Inject both the service-to-test and its (spy) dependency
 
   it('should send error', (done: DoneFn) => {
     const errorContent: string = "error"
@@ -19,5 +18,6 @@ describe('ErrorService', () => {
     });
     errorService.createError(errorContent)
   });
+
 });
 

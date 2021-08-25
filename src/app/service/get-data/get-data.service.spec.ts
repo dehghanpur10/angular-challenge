@@ -5,28 +5,28 @@ import {GetDataService} from './get-data.service'
 import {FetchDataService} from '../fetch-data/fetch-data.service'
 import {Number, Action} from '../../models/app.model'
 
+const numbers: Number[] = [
+  {value: 1, action: "add"},
+  {value: 1, action: "multiply"},
+]
+const actionValue = {
+  add: 5,
+  multiply: 2
+}
+
 describe('GetDataService', () => {
   let getData: GetDataService;
   let fetchDataService: jasmine.SpyObj<FetchDataService>;
-  const numbers: Number[] = [
-    {value: 1, action: "add"},
-    {value: 1, action: "multiply"},
-  ]
-  const actionValue = {
-    add: 5,
-    multiply: 2
-  }
+
   beforeEach(() => {
     const spy = jasmine.createSpyObj('FetchDataService', ['getNumber', 'getActionValue']);
 
     TestBed.configureTestingModule({
-      // Provide both the service-to-test and its (spy) dependency
       providers: [
         GetDataService,
         {provide: FetchDataService, useValue: spy}
       ]
     });
-    // Inject both the service-to-test and its (spy) dependency
     getData = TestBed.inject(GetDataService);
     fetchDataService = TestBed.inject(FetchDataService) as jasmine.SpyObj<FetchDataService>;
   });
@@ -44,7 +44,8 @@ describe('GetDataService', () => {
 
     getData.filterData('')
 
-  })
+  });
+
   it('should be return multiply operations', (done: DoneFn) => {
     fetchDataService.getNumber.and.returnValue(of(numbers))
     fetchDataService.getActionValue.and.returnValue(of(actionValue))
@@ -57,7 +58,8 @@ describe('GetDataService', () => {
 
     getData.filterData('multiply')
 
-  })
+  });
+
   it('should be return add operations', (done: DoneFn) => {
     fetchDataService.getNumber.and.returnValue(of(numbers))
     fetchDataService.getActionValue.and.returnValue(of(actionValue))
@@ -70,7 +72,8 @@ describe('GetDataService', () => {
 
     getData.filterData('add')
 
-  })
+  });
+
   it('should be return error', (done: DoneFn) => {
     fetchDataService.getNumber.and.returnValue(throwError(() => {
       return new Error("error");
