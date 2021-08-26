@@ -4,7 +4,7 @@ import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from "@angular/core";
 import {Subject} from "rxjs";
 
 import {AppComponent} from './app.component'
-import {ErrorComponent} from "./components/error/error.component";
+import {ErrorComponent} from "./shared/error/error.component";
 import {ErrorService} from "./shared/error/error.service";
 
 describe('AppComponent', () => {
