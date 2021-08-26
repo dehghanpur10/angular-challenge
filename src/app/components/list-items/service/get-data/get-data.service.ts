@@ -1,16 +1,13 @@
 import {Injectable} from '@angular/core';
-import {Subject, Observable, throwError, of} from 'rxjs'
 
 import {FetchDataService} from '../fetch-data/fetch-data.service'
-import {Operation} from '../../models/app.model'
-import {catchError, map, mergeMap, tap} from "rxjs/operators";
-import {Number} from '../../models/app.model'
+import {Number, Operation} from '../../models/app.model'
+import {map, mergeMap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetDataService {
-  data = new Subject<Operation[]>()
 
   constructor(private fetch: FetchDataService) {
   }
@@ -19,21 +16,13 @@ export class GetDataService {
     if (!type) {
       type = "all"
     }
-    this.fetch.getNumber().pipe(
+    return this.fetch.getNumber().pipe(
       map((number: Number[]) => {
         return number.filter(number => this.filterNumber(type, number))
       }),
       mergeMap(numbers => {
-        const merge = this.mergeNumber(numbers)
-        return merge
+        return this.mergeNumber(numbers)
       })
-    ).subscribe(
-      operations => {
-        this.data.next(operations);
-      },
-      error => {
-        this.data.error("error in number file")
-      }
     )
   }
 

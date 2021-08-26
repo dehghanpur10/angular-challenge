@@ -34,55 +34,40 @@ describe('GetDataService', () => {
   it('should be return all operations', (done: DoneFn) => {
     fetchDataService.getNumber.and.returnValue(of(numbers))
     fetchDataService.getActionValue.and.returnValue(of(actionValue))
-    getData.data.subscribe((data) => {
-     expect(data).toEqual([
-       {value1: 1, value2: 5, action: "add"},
-       {value1: 1, value2: 2, action: "multiply"}
-     ])
+
+    getData.filterData('').subscribe((data) => {
+      expect(data).toEqual([
+        {value1: 1, value2: 5, action: "add"},
+        {value1: 1, value2: 2, action: "multiply"}
+      ])
       done()
     })
-
-    getData.filterData('')
 
   });
 
   it('should be return multiply operations', (done: DoneFn) => {
     fetchDataService.getNumber.and.returnValue(of(numbers))
     fetchDataService.getActionValue.and.returnValue(of(actionValue))
-    getData.data.subscribe((data) => {
+
+    getData.filterData('multiply').subscribe((data) => {
       expect(data).toEqual([
         {value1: 1, value2: 2, action: "multiply"}
       ])
       done()
     })
 
-    getData.filterData('multiply')
-
   });
 
   it('should be return add operations', (done: DoneFn) => {
     fetchDataService.getNumber.and.returnValue(of(numbers))
     fetchDataService.getActionValue.and.returnValue(of(actionValue))
-    getData.data.subscribe((data) => {
+
+    getData.filterData('add').subscribe((data) => {
       expect(data).toEqual([
         {value1: 1, value2: 5, action: "add"},
       ])
       done()
     })
 
-    getData.filterData('add')
-
   });
-
-  it('should be return error', (done: DoneFn) => {
-    fetchDataService.getNumber.and.returnValue(throwError(() => {
-      return new Error("error");
-    }))
-    getData.data.subscribe(() => {
-    }, (error) => {
-      expect(error).toBe("error in number file")
-      done()
-    })
-    getData.filterData('')
-  })
 });
