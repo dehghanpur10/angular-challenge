@@ -18,7 +18,6 @@ import { SharedModule } from './shared/shared.module';
     ItemComponent
   ],
   imports: [
-    BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([{path:'',component:ListItemsComponent}]),
