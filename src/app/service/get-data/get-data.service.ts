@@ -15,6 +15,28 @@ export class GetDataService {
   constructor(private fetch: FetchDataService) {
   }
 
+  filterData(type: string) {
+    if (!type) {
+      type = "all"
+    }
+    this.fetch.getNumber().pipe(
+      map((number: Number[]) => {
+        return number.filter(number => this.filterNumber(type, number))
+      }),
+      mergeMap(numbers => {
+        const merge = this.mergeNumber(numbers)
+        return merge
+      })
+    ).subscribe(
+      operations => {
+        this.data.next(operations);
+      },
+      error => {
+        this.data.error("error in number file")
+      }
+    )
+  }
+
   private filterNumber(type: string, number: Number): boolean {
     if (type === "all") {
       return true
@@ -28,7 +50,7 @@ export class GetDataService {
     return false
   }
 
-  private mergeNumber( numbers: Number[]) {
+  private mergeNumber(numbers: Number[]) {
     return this.fetch.getActionValue().pipe(
       map(actionValue => {
         let operations: Operation[] = [];
@@ -53,29 +75,5 @@ export class GetDataService {
 
   }
 
-  filterData(type: string) {
-    if (!type) {
-      type = "all"
-    }
-
-
-    this.fetch.getNumber().pipe(
-      map((number: Number[]) => {
-        return number.filter(number => this.filterNumber(type, number))
-      }),
-      mergeMap(numbers => {
-        const merge = this.mergeNumber(numbers)
-        return merge
-      })
-    ).subscribe(
-      operations => {
-        this.data.next(operations);
-      },
-      error => {
-        this.data.error("error in number file")
-      }
-    )
-
-  }
 
 }
