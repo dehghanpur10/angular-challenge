@@ -3,7 +3,7 @@ import {DebugElement} from "@angular/core";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {By} from "@angular/platform-browser";
 
-import {MaterialModule} from '../../../material/material.module'
+import {MaterialModule} from '../../../shared/material/material.module'
 import {ItemComponent} from './item.component'
 
 

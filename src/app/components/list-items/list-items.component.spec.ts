@@ -5,7 +5,7 @@ import {DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {MaterialModule} from '../../material/material.module'
+import {MaterialModule} from '../../shared/material/material.module'
 import {GetDataService} from "./service/get-data/get-data.service";
 import {ErrorService} from '../../shared/error/error.service'
 import {ListItemsComponent} from "./list-items.component";
