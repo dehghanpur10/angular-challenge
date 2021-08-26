@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MaterialModule} from "./shared/material/material.module";
 import {HeaderComponent} from "./components/header/header.component";
 import { ListItemsComponent } from './components/list-items/list-items.component';
 import { ItemComponent } from './components/list-items/item/item.component';
@@ -23,7 +22,6 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([{path:'',component:ListItemsComponent}]),
-    MaterialModule,
     SharedModule
   ],
   providers: [],

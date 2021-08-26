@@ -85,9 +85,6 @@ describe('ListItemsComponent', () => {
     });
   });
   describe('test template of component', () => {
-    it('should create', () => {
-      expect(component).toBeDefined();
-    });
 
     it('should display items', () => {
       component.operations = [{value1: 0, value2: 0, action: "add"}, {value1: 0, value2: 0, action: "add"}, {

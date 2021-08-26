@@ -15,9 +15,6 @@ describe('ErrorComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeDefined();
-  });
 
   it('should be display error', ()=>{
     component.error = "test error";

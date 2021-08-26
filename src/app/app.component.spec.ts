@@ -32,10 +32,6 @@ describe('AppComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeDefined();
-  });
-
   it('should create error', () => {
     errorService.error.next("error test");
     fixture.detectChanges();

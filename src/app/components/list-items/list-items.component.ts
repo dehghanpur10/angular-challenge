@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
-import {Operation} from "../../models/app.model";
+import {Operation} from "../../shared/models/app.model";
 import {ActivatedRoute} from "@angular/router";
 import {GetDataService} from "./service/get-data/get-data.service";
 import {ErrorService} from '../../shared/error/error.service'
