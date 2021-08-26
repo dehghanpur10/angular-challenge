@@ -3,7 +3,7 @@ import {of, throwError} from 'rxjs';
 
 import {GetDataService} from './get-data.service'
 import {FetchDataService} from '../fetch-data/fetch-data.service'
-import {Number, Action} from '../../models/app.model'
+import {Number, Action} from '../../../../models/app.model'
 
 const numbers: Number[] = [
   {value: 1, action: "add"},

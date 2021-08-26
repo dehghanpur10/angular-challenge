@@ -1,6 +1,6 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs'
-import {ErrorService} from './service/error/error.service'
+import {ErrorService} from './shared/error/error.service'
 
 @Component({
   selector: 'app-root',

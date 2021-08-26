@@ -3,7 +3,7 @@ import {TestBed} from '@angular/core/testing';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 import {FetchDataService} from './fetch-data.service';
-import {Number, Action} from '../../models/app.model'
+import {Number, Action} from '../../../../models/app.model'
 
 describe('FetchDataService', () => {
   let service: FetchDataService;

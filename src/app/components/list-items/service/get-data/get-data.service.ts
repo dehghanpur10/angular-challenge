@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 import {FetchDataService} from '../fetch-data/fetch-data.service'
-import {Number, Operation} from '../../models/app.model'
+import {Number, Operation} from '../../../../models/app.model'
 import {map, mergeMap} from "rxjs/operators";
 
 @Injectable({
@@ -18,7 +18,7 @@ export class GetDataService {
     }
     return this.fetch.getNumber().pipe(
       map((number: Number[]) => {
-        return number.filter(number => this.filterNumber(type, number))
+        return number.filter(number => GetDataService.filterNumber(type, number))
       }),
       mergeMap(numbers => {
         return this.mergeNumber(numbers)
@@ -26,7 +26,7 @@ export class GetDataService {
     )
   }
 
-  private filterNumber(type: string, number: Number): boolean {
+  private static filterNumber(type: string, number: Number): boolean {
     if (type === "all") {
       return true
     }

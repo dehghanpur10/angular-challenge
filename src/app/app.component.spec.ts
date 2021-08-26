@@ -5,7 +5,7 @@ import {Subject} from "rxjs";
 
 import {AppComponent} from './app.component'
 import {ErrorComponent} from "./components/error/error.component";
-import {ErrorService} from "./service/error/error.service";
+import {ErrorService} from "./shared/error/error.service";
 
 describe('AppComponent', () => {
   let component: AppComponent;

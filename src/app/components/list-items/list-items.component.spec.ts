@@ -1,13 +1,13 @@
 import {ActivatedRoute, Params} from "@angular/router";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {of, Subject} from "rxjs";
+import {of, Subject,throwError} from "rxjs";
 import {DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {MaterialModule} from '../../material/material.module'
-import {GetDataService} from "../../service/get-data/get-data.service";
-import {ErrorService} from '../../service/error/error.service'
+import {GetDataService} from "./service/get-data/get-data.service";
+import {ErrorService} from '../../shared/error/error.service'
 import {ListItemsComponent} from "./list-items.component";
 import {ItemComponent} from "./item/item.component";
 
@@ -44,7 +44,6 @@ describe('ListItemsComponent', () => {
     errorService = fixture.debugElement.injector.get(ErrorService);
     getDataService = fixture.debugElement.injector.get(GetDataService);
     activatedRoute = fixture.debugElement.injector.get(ActivatedRoute)
-    getDataService.data = new Subject();
     activatedRoute.queryParams = of([])
 
     component = fixture.componentInstance;
@@ -54,8 +53,10 @@ describe('ListItemsComponent', () => {
   describe('test class logic', () => {
     it('should be get operations', () => {
       const operations = [{value1: 1, value2: 2, action: "add"}];
+      getDataService.filterData = (type:string) => {
+        return of(operations)
+      }
       component.ngOnInit();
-      getDataService.data.next(operations);
       expect(component.operations).toEqual(operations)
     });
 
@@ -64,16 +65,18 @@ describe('ListItemsComponent', () => {
         expect(error).toBe("There is a problem on the server")
         done()
       })
+      getDataService.filterData = (type:string) => {
+        return throwError("error")
+      }
       component.ngOnInit();
-      getDataService.data.error("error content");
     });
 
     it('should be get new operations', () => {
       const operations = [{value1: 1, value2: 2, action: "add"}];
       const subject = new Subject<Params>()
       activatedRoute.queryParams = subject.asObservable()
-      getDataService.filterData = () => {
-        getDataService.data.next(operations)
+      getDataService.filterData = (type:string) => {
+        return of(operations)
       }
       component.ngOnInit();
 
