@@ -24,4 +24,4 @@ jobs:
         cache: 'npm'
     - run: npm install -g @angular/cli
     - run: npm i
-    - run: npm run test:prod
+    - run: npm test -- --configuration=ci
