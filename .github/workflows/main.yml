@@ -24,4 +24,4 @@ jobs:
         cache: 'npm'
     - run: npm install -g @angular/cli
     - run: npm i
-    - run: npm run test:ci
+    - run: ng test --sourceMap=false --browsers=ChromeHeadless --watch=false
