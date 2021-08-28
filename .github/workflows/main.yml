@@ -24,4 +24,4 @@ jobs:
         cache: 'npm'
     - run: npm install -g @angular/cli
     - run: npm i
-    - run: ng test --no-watch --code-coverage
+    - run: npm run test:prod
