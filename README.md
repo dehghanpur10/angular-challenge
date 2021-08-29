@@ -10,7 +10,7 @@
 
 > show MISSING DATA error with red border. :red_circle:
 
-<img height="400" src="./assets/multiply.PNG" width="300"/> <img height="400" src="./assets/add.PNG" width="300"/> <img height="400" src="./assets/missing.PNG" width="300"/>
+<img height="280" src="./assets/multiply.PNG" width="210"/> <img height="280" src="./assets/add.PNG" width="210"/> <img height="280" src="./assets/missing.PNG" width="210"/>
 
 
 
