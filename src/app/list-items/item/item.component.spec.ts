@@ -3,8 +3,8 @@ import {DebugElement} from "@angular/core";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {By} from "@angular/platform-browser";
 
-import {MaterialModule} from '../../../shared/material/material.module'
 import {ItemComponent} from './item.component'
+import {SharedModule} from "../../shared/shared.module";
 
 
 describe('ItemComponent', () => {
@@ -14,7 +14,7 @@ describe('ItemComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ItemComponent],
-      imports: [BrowserAnimationsModule, MaterialModule],
+      imports: [BrowserAnimationsModule, SharedModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ItemComponent);
