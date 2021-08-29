@@ -6,15 +6,15 @@
 **Multiply**
 > show multiply operations with orange border :orange_circle:
 
-![](./assets/multiply.PNG)
-
 > show add operations with green border. :green_circle:
-
-![](./assets/add.PNG)
 
 > show MISSING DATA error with red border. :red_circle:
 
-<img src="./assets/missing.PNG" width="100"/>
+![](./assets/multiply.PNG) ![](./assets/add.PNG) ![](./assets/missing.PNG)
+
+
+
+
 
 
 
