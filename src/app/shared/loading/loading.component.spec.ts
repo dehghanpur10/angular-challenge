@@ -31,7 +31,6 @@ describe('LoadingComponent', () => {
     fixture.detectChanges();
     const errorDebug: DebugElement = fixture.debugElement;
     const div  = errorDebug.query(By.css('.lds-ellipsis'));
-    console.log(div)
     expect(div).toBeNull()
   });
 });
