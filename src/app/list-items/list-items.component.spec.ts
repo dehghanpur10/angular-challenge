@@ -5,11 +5,11 @@ import {DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {MaterialModule} from '../../shared/material/material.module'
 import {GetDataService} from "./service/get-data/get-data.service";
-import {ErrorService} from '../../shared/error/error.service'
+import {ErrorService} from '../shared/error/error.service'
 import {ListItemsComponent} from "./list-items.component";
 import {ItemComponent} from "./item/item.component";
+import {SharedModule} from "../shared/shared.module";
 
 describe('ListItemsComponent', () => {
   let component: ListItemsComponent;
@@ -31,7 +31,7 @@ describe('ListItemsComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [ListItemsComponent, ItemComponent],
-      imports: [BrowserAnimationsModule, MaterialModule],
+      imports: [BrowserAnimationsModule, SharedModule],
       providers: [
         {provide: ActivatedRoute, useValue: routeSpy},
         {provide: GetDataService, useValue: getDataSpy},

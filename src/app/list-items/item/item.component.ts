@@ -8,7 +8,7 @@ import {
   // ...
 } from '@angular/animations';
 
-import {Operation} from '../../../shared/models/app.model'
+import {Operation} from '../../shared/models/app.model'
 
 @Component({
   selector: 'app-item',
