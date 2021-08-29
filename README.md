@@ -1,5 +1,4 @@
 # Angular challenge
 
 ## preview
-  ![](https://gifyu.com/image/Gtgh)
-
+ ![](https://s9.gifyu.com/images/preview.gif)
