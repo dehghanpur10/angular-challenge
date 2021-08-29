@@ -5,26 +5,23 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MaterialModule} from "./material/material.module";
 import {HeaderComponent} from "./components/header/header.component";
 import { ListItemsComponent } from './components/list-items/list-items.component';
 import { ItemComponent } from './components/list-items/item/item.component';
-import { ErrorComponent } from './components/error/error.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ListItemsComponent,
-    ItemComponent,
-    ErrorComponent
+    ItemComponent
   ],
   imports: [
-    BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([{path:'',component:ListItemsComponent}]),
-    MaterialModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

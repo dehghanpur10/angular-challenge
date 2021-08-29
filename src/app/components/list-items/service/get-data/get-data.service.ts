@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 import {FetchDataService} from '../fetch-data/fetch-data.service'
-import {Number, Operation} from '../../../../models/app.model'
+import {Number, Operation} from '../../../../shared/models/app.model'
 import {map, mergeMap} from "rxjs/operators";
 
 @Injectable({

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
-import {Number, Action} from '../../../../models/app.model'
+import {Number, Action} from '../../../../shared/models/app.model'
 import {catchError, map, mergeMap} from "rxjs/operators";
 import {of} from "rxjs";
 
