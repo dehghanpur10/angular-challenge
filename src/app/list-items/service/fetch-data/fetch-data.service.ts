@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 import {Number, Action} from '../../../shared/models/app.model'
-import {catchError, map, mergeMap} from "rxjs/operators";
-import {of} from "rxjs";
+import {catchError, map} from "rxjs/operators";
+import {combineLatest, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -33,13 +33,14 @@ export class FetchDataService {
   }
 
   getActionValue() {
-    return this.getAdd().pipe(
-      catchError(() => of("MISSING DATA")),
-      mergeMap(add => this.getMultiply().pipe(
-        catchError(() => of("MISSING DATA")),
-        map(multiply => {
-          return {add: add, multiply: multiply}
-        })))
+    return combineLatest([
+      this.getAdd().pipe(catchError(() => of("MISSING DATA"))),
+      this.getMultiply().pipe(catchError(() => of("MISSING DATA")),)
+    ]).pipe(
+      map(([add,multiply])=>{
+        return {add,multiply}
+      })
     )
+
   }
 }
