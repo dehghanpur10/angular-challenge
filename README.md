@@ -1,7 +1,7 @@
 # Angular challenge
 
 ## preview
- To see preview fo project click [here](https://angular-challenge-6c63f.web.app/).
+ To visit project click [here](https://angular-challenge-6c63f.web.app/).
 
 > show multiply operations with orange border :orange_circle:
 
