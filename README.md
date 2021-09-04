@@ -1,7 +1,7 @@
 # Angular challenge
 
 ## preview
- To see preview fo project click [here](https://s9.gifyu.com/images/preview.gif).
+ To see preview fo project click [here](https://angular-challenge-6c63f.web.app/).
 
 > show multiply operations with orange border :orange_circle:
 
@@ -11,9 +11,7 @@
 
 <img height="280" src="./assets/multiply.PNG" width="210"/> <img height="280" src="./assets/add.PNG" width="210"/> <img height="280" src="./assets/missing.PNG" width="210"/>
 
-> show number file error by component error
 
-![](./assets/error.PNG)
 
 ## Details
 
