@@ -3,8 +3,8 @@ import {Subscription} from "rxjs";
 import {Operation} from "../shared/models/app.model";
 import {ActivatedRoute} from "@angular/router";
 import {GetDataService} from "./service/get-data/get-data.service";
-import {ErrorService} from '../shared/error/error.service'
 import {LoadingService} from "../shared/loading/loading.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-list-items',
@@ -16,7 +16,7 @@ export class ListItemsComponent implements OnInit, OnDestroy {
   querySub: Subscription | undefined;
   operations: Operation[] = []
 
-  constructor(private route: ActivatedRoute, private data: GetDataService, private error: ErrorService,private load: LoadingService) {
+  constructor(private route: ActivatedRoute, private data: GetDataService, private _snackBar: MatSnackBar,private load: LoadingService) {
   }
 
   ngOnInit() {
@@ -29,7 +29,9 @@ export class ListItemsComponent implements OnInit, OnDestroy {
           this.operations = operations
         },
         (err) => {
-          this.error.createError("There is a problem on the server")
+          this._snackBar.open('There is a problem on the server','',{
+            duration:5000
+          })
         }
       );
     })

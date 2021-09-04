@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {DebugElement} from "@angular/core";
+import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser";
 
 import { LoadingComponent } from './loading.component';
@@ -10,7 +10,8 @@ describe('LoadingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoadingComponent ]
+      declarations: [ LoadingComponent ],
+      schemas:[CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
     fixture = TestBed.createComponent(LoadingComponent);

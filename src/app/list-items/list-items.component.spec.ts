@@ -6,10 +6,11 @@ import {By} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {GetDataService} from "./service/get-data/get-data.service";
-import {ErrorService} from '../shared/error/error.service'
 import {ListItemsComponent} from "./list-items.component";
 import {ItemComponent} from "./item/item.component";
 import {SharedModule} from "../shared/shared.module";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 describe('ListItemsComponent', () => {
   let component: ListItemsComponent;
@@ -17,17 +18,13 @@ describe('ListItemsComponent', () => {
 
   let activatedRoute: ActivatedRoute;
   let getDataService: GetDataService;
-  let errorService: ErrorService;
+  let snackBar:MatSnackBar;
 
   beforeEach(() => {
     const routeSpy = jasmine.createSpyObj('ActivatedRoute', ['queryParams']);
     const getDataSpy = jasmine.createSpyObj('GetDataService', ['filterData']);
-    const mock = {
-      error: new Subject(),
-      createError: function (a: string) {
-        this.error.next(a)
-      }
-    }
+    const snackBarSpy = jasmine.createSpyObj('MatSnackBar', ['open']);
+
 
     TestBed.configureTestingModule({
       declarations: [ListItemsComponent, ItemComponent],
@@ -35,13 +32,15 @@ describe('ListItemsComponent', () => {
       providers: [
         {provide: ActivatedRoute, useValue: routeSpy},
         {provide: GetDataService, useValue: getDataSpy},
-        {provide: ErrorService, useValue: mock},
-      ]
+        {provide: MatSnackBar, useValue: snackBarSpy},
+      ],
+      schemas:[CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ListItemsComponent);
 
-    errorService = fixture.debugElement.injector.get(ErrorService);
+    snackBar = fixture.debugElement.injector.get(MatSnackBar);
+
     getDataService = fixture.debugElement.injector.get(GetDataService);
     activatedRoute = fixture.debugElement.injector.get(ActivatedRoute)
     activatedRoute.queryParams = of([])
@@ -60,15 +59,13 @@ describe('ListItemsComponent', () => {
       expect(component.operations).toEqual(operations)
     });
 
-    it('should be create error', (done: DoneFn) => {
-      errorService.error.subscribe((error) => {
-        expect(error).toBe("There is a problem on the server")
-        done()
-      })
+    it('should be create error', () => {
+
       getDataService.filterData = (type:string) => {
         return throwError("error")
       }
       component.ngOnInit();
+      expect(snackBar.open).toHaveBeenCalledWith('There is a problem on the server','', {duration: 5000});
     });
 
     it('should be get new operations', () => {
