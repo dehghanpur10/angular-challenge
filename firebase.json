@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/challenge-front",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
