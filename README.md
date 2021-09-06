@@ -18,7 +18,7 @@
 ### header
 There is Three button in header that can filter operations according to action's type.
 these buttons are router link, and this button change query of url.
-for these buttons used angular material button.
+for these buttons used angular material button .
 
 ### main section
 list-items component has been used for display operations and to display each item has been used 
